@@ -1,16 +1,6 @@
 <template>
   <div class="wrapper">
-    <NuxtLink to="/cmll">CMLL</NuxtLink>
-    <NuxtLink to="/pll">PLL</NuxtLink>
-    <NuxtLink to="/eo">EO</NuxtLink>
-    <NuxtLink to="/random">Random</NuxtLink>
+    <h1>Roux Cubing Algorythms</h1>
   </div>
 </template>
-<style>
-a {
-  display: block;
-  background: #eef;
-  padding: 20px 20px 20px 30px;
-  margin: 5px 0;
-}
-</style>
+<style scoped></style>

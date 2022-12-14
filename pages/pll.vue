@@ -3,25 +3,25 @@
     <h2>Edges Only</h2>
     <p>Both across</p>
     <div class="flex">
-      <img src="h.png" />
+      <img src="@/assets/images/pll/h.png" />
       <h4>M2 U M2 U2 M2 U M2</h4>
     </div>
 
     <p>Counter-clockwise</p>
     <div class="flex">
-      <img src="ua.png" />
+      <img src="@/assets/images/pll/ua.png" />
       <h4>M2 U M U2 M' U M2</h4>
     </div>
 
     <p>Clockwise</p>
     <div class="flex">
-      <img src="ub.png" />
+      <img src="@/assets/images/pll/ub.png" />
       <h4>M2 U' M U2 M' U' M2</h4>
     </div>
 
     <p>Diagonal</p>
     <div class="flex">
-      <img src="z.png" />
+      <img src="@/assets/images/pll/z.png" />
       <h4>M' U M2 U M2 U M' U2 M2</h4>
     </div>
   </div>
@@ -30,7 +30,7 @@
     <h2>Corners and Edges</h2>
     <p>T Perm</p>
     <div class="flex">
-      <img src="t.png" />
+      <img src="@/assets/images/pll/t.png" />
       <h4>
         <span class="sm">R U R' U'</span> <span class="Rfr">R' F R</span>2
         <span class="URUr">U' R' U' R</span> <span class="uRF">U R' F'</span>
@@ -39,7 +39,7 @@
 
     <p>Y Perm</p>
     <div class="flex">
-      <img src="y.png" />
+      <img src="@/assets/images/pll/y.png" />
       <h4>
         F R <span class="URUr">U' R' U' R</span>
         <span class="uRF">U R' F'</span> <span class="sm">R U R' U'</span>
@@ -49,24 +49,24 @@
 
     <p>J Perm</p>
     <div class="flex">
-      <img src="ja.png" />
+      <img src="@/assets/images/pll/ja.png" />
       <h4>x R2 F R F' R U2 r' U r U2</h4>
     </div>
 
     <p>J Perm</p>
     <div class="flex">
-      <img src="jb.png" />
+      <img src="@/assets/images/pll/jb.png" />
       <h4>R U R' F' R U R' U' R' F R2 U' R'</h4>
     </div>
 
     <p>Nb Perm</p>
     <div class="flex">
-      <img src="nb.png" />
+      <img src="@/assets/images/pll/nb.png" />
       <h4>R' U R U' R' F' U' F R U R' F R' F' R U' R</h4>
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .flex {
   display: flex;
   padding: 5px 10px;
