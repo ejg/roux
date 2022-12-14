@@ -1,0 +1,536 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" >
+<title>Random</title>
+<style>
+* {box-sizing:border-box;margin:0;padding:0;}
+body{font:100%/1.4 helvetica;}
+h2 {font-size:1.5rem;}
+h4 {font-size:1.5rem;}
+p {margin:0 0 5px 58px;color:blue;min-height:90px;display:flex;align-items:flex-end;}
+.random_wrapper {width:100%;max-width:400px;margin:0 auto 20px;}
+.random {position:relative;height:74vh;width:100%;overflow:hidden;}
+.moves {position:absolute;top:0;left:0;display:none;width:100%;}
+.xxmoves {display:none;}
+.done {visibility:hidden;color:#000;}
+.moves.show {display:block;}
+.flex {width:370px;margin:0 auto;}
+h4 {visibility:hidden;margin-left:48px;}
+img {height:370px;}
+.buttons {display:flex;justify-content:space-around;margin-bottom:30px;}
+.button_wrapper div + div {margin-bottom:0px;}
+button {background:#eef;padding:10px;font-size:1.2rem;min-width:100px;}
+.show_hint .done  {visibility:visible;}
+.show_moves h4  {visibility:visible;}
+.container {display:grid;gap:5px;max-width:400px;margin:10px auto;
+	grid-template-columns: 1fr repeat(3, 2fr) 1fr}
+.container div {background:#ccc;aspect-ratio:1;}
+.container .gray {background:#666;}
+.container .blank {background:#fff;}
+.container .small_row {aspect-ratio:2;}
+.container .small_col {aspect-ratio:.5;}
+.container .small_row.small_col {aspect-ratio:0}
+
+:root {
+	--orange:#ff9800;
+	--red:#f44336;
+	--blue:blue;
+	--green:#4acf4a;
+	--yellow:#ffeb3b;
+	--white:#e8eaf6;
+
+	--colormain:var(--orange);
+	--color1:var(--yellow);
+	--color1opp:var(--white);
+	--color2:var(--blue);
+	--color2opp:var(--green);
+}
+.orange {
+	--colormain:var(--orange);
+}
+.orange.yellow1 {
+	--color1:var(--yellow);
+	--color1opp:var(--white);
+	--color2:var(--blue);
+	--color2opp:var(--green);
+}
+.orange.white1 {
+	--color1:var(--white);
+	--color1opp:var(--yellow);
+	--color2:var(--green);
+	--color2opp:var(--blue);
+}
+.orange.blue1 {
+	--color1:var(--blue);
+	--color1opp:var(--green);
+	--color2:var(--white);
+	--color2opp:var(--yellow);
+}
+.orange.green1 {
+	--color1:var(--green);
+	--color1opp:var(--blue);
+	--color2:var(--yellow);
+	--color2opp:var(--white);
+}
+
+/* skip -- left column */
+.skip .c4, .skip .c5, .skip .c8, .skip .c9 {background: var(--colormain);}
+
+.skipLC .c1, .skipLC .c10 { background:var(--color2);}
+.skipLC .c2, .skipLC .c12 { background:var(--color1opp);}
+.skipLC .c3, .skipLC .c7 { background:var(--color1);}
+.skipLC .c6, .skipLC .c11 { background:var(--color2opp);}
+
+.skipNC .c1, .skipNC .c11 {background:var(--color1);}
+.skipNC .c2, .skipNC .c12 {background:var(--color1opp);}
+.skipNC .c3, .skipNC .c6 {background:var(--color2);}
+.skipNC .c7, .skipNC .c10 {background:var(--color2opp);}
+
+@media screen and (min-width:500px) {
+	p {font-size:1.2rem;}
+}
+</style>
+</head>
+<body>
+<div id="container" class="container skip skipNC orange green1">
+	<div class="blank small_row small_col"></div>
+	<div class="small_row c1"></div>
+	<div class="gray small_row"></div>
+	<div class="small_row c2"></div>
+	<div class="blank small_row small_col"></div>
+
+	<div class="small_col c3"></div>
+	<div class="c4"></div>
+	<div class="gray"></div>
+	<div class="c5"></div>
+	<div class="small_col c6"></div>
+
+	<div class="gray small_col"></div>
+	<div class="gray"></div>
+	<div class="gray"></div>
+	<div class="gray"></div>
+	<div class="gray small_col"></div>
+
+	<div class="small_col c7"></div>
+	<div class="c8"></div>
+	<div class="gray"></div>
+	<div class="c9"></div>
+	<div class="small_col c10"></div>
+
+	<div class="blank small_row small_col"></div>
+	<div class="small_row c11"></div>
+	<div class="gray small_row"></div>
+	<div class="small_row c12"></div>
+	<div class="blank small_row small_col"></div>
+</div>
+<!--
+<div class="random_wrapper">
+  <div id="random" class="random">
+		<div class="moves oneLeft">
+	    <p class="done">O - Skip<br>One correct pair</p>
+	    <div class="flex">
+	      <img src="../skip/a2.svg">
+	      <h4>R U2 R' U' R U2 L' U R' U' L</h4>
+	    </div>
+    </div>
+		<div class="moves oneLeft">
+	    <p class="done">O - Skip<br>No correct pairs</p>
+	    <div class="flex">
+	      <img src="../skip/a6.svg">
+	      <h4>(R' U L' U2 R U' L)2</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">AS - Anti-sune<br>Opposite pair diagonal<br>F-edge UFR matches U-face UBR</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b1.svg">
+	      <h4>R' U' R U' R' U2 R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>AS - Anti-sune<br>Opposite pair column<br>F-edge UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b2.svg">
+	      <h4>U2 R2 D R' U R D' R' U R' U' R U' R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>AS - Anti-sune<br>Opposite pair row<br>F-edge UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b3.svg">
+	      <h4>R' L U' R U L' U2 R' U2 R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">AS - Anti-sune<br>Opposite pair column<br>F-edge UFR matches U-face UFL</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b4.svg">
+	      <h4>U2 R U2 R' U2 <span class="Rfr">R' F R</span> F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">AS - Anti-sune<br>Opposite pair row<br>F-edge UFR matches U-face UBR</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b5.svg">
+	      <h4>R' U L U' R U L'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>AS - Anti-sune<br>Opposite pair diagonal<br>F-edge UFR matches U-face UFL</p>
+	    <div class="flex">
+	      <img src="../anti-sune/b6.svg">
+	      <h4>U2 R' U' R U' L U' R' U L' U2 R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">S - Sune<br>Opposite pair diagonal<br>R-edge UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../sune/b1.svg">
+	      <h4>R U R' U R U2 R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>S - Sune<br>Opposite pair column<br>R-edge UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../sune/b2.svg">
+	      <h4>R' F2 R U2 R U' L' U x'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>S - Sune<br>Opposite pair row<br>R-edge UFR matches U-face UBR</p>
+	    <div class="flex">
+	      <img src="../sune/b3.svg">
+	      <h4>x U R' U' L U2 R U2 R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>S - Sune<br>Opposite pair column<br>R-edge UFR matches U-face UBL</p>
+	    <div class="flex">
+	      <img src="../sune/b4.svg">
+	      <h4>U' R U R' U R U' R D R' U' R D' R2</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">S - Sune<br>Opposite pair row<br>R-edge UFR matches U-face UBL</p>
+	    <div class="flex">
+	      <img src="../sune/b5.svg">
+	      <h4>R U' L' U R' U' L</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>S - Sune<br>Opposite pair diagonal<br>R-edge UFR matches U-face UBR</p>
+	    <div class="flex">
+	      <img src="../sune/b6.svg">
+	      <h4>U2 R U R' U L' U R U' L U2 R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">L - Bowtie<br>U-diagonal other<br>F-edge of UFR opposite U-face of UBR</p>
+	    <div class="flex">
+	      <img src="../bowtie/b1.svg">
+				<div class="multi">
+		      <h4>U2 R U2 R' U' <span class="sm">R U R' U'<br>R U R' U'</span> R U' R'</h4>
+		      <h4>sune U anitsune</h4>
+				</div>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>L - Bowtie<br>U-diagonal pair<br>F-edge of UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../bowtie/b2.svg">
+	      <h4>R U2 R D R' U2 R D' R2</h4>
+			</div>
+		</div>
+		<div class="moves">
+	    <p class="done">L - Bowtie<br>U-diagonal opposite<br>F-edge of UFR matches U-face of UBR</p>
+	    <div class="flex">
+	      <img src="../bowtie/b3.svg">
+	      <h4>F R' F' R U R U' R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">L - Bowtie<br>U-diagonal opposite<br>F-edge of UFR not in U-face</p>
+	    <div class="flex">
+	      <img src="../bowtie/b4.svg">
+	      <h4><span class="Rfr">R' F R</span> U F U' F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>L - Bowtie<br>U-diagonal pair<br>F-edge of UFR opposite U-face of UBR</p>
+	    <div class="flex">
+	      <img src="../bowtie/b5.svg">
+	      <h4>U' R' U2 R' D' R U2 R' D R2</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>L - Bowtie<br>U-diagonal other<br>F-edge of UFR matches U-face of UBR</p>
+	    <div class="flex">
+	      <img src="../bowtie/b6.svg">
+	      <h4>U2 L' U2 R U' R' U2 R L U' R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">U - Headlights<br>U-face opposites<br>F-face same</p>
+	    <div class="flex">
+	      <img src="../headlights/b1.svg">
+				<div class="multi">
+		      <h4>R' U' R U' R' U2 R2<br>U R' U R U2 R'</h4>
+		      <h4>antisune sune</h4>
+				</div>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">U - Headlights<br>U-face same<br>F-face same</p>
+	    <div class="flex">
+	      <img src="../headlights/b2.svg">
+	      <h4>U R U' r' F R' F2 U' F U r</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">U - Headlights<br>Forward Slash</p>
+	    <div class="flex">
+	      <img src="../headlights/b3.svg">
+	      <h4>U2 R2 D R' U2 R D' R' U2 R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">U - Headlights<br>Double Slash</p>
+	    <div class="flex">
+	      <img src="../headlights/b4.svg">
+	      <h4>U2 R' F U' R F R' U R F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>U - Headlights<br>Back Slash</p>
+	    <div class="flex">
+	      <img src="../headlights/b5.svg">
+	      <h4>R2 D' R U2 R' D R U2 R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">U - Headlights<br>U-face same<br>F-face opposites</p>
+	    <div class="flex">
+	      <img src="../headlights/b6.svg">
+	      <h4>U' F <span class="sm">R U R' U'</span> F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">T - Chameleon<br>U-face same<br>F-face same</p>
+	    <div class="flex">
+	      <img src="../chameleon/b1.svg">
+				<div class="multi">
+		      <h4>F <span class="Rfr">R' F R</span>2 <span class="URUr">U' R' U' R</span> U R' F2</h4>
+		      <h4>U' antisune U2 sune</h4>
+		      <h4>U' sune U2 antisune</h4>
+				</div>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>T - Chameleon<br>Right column</p>
+	    <div class="flex">
+	      <img src="../chameleon/b3.svg">
+	      <h4>U <span class="Rfr">R' F R</span> U2 F U2 F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>T - Chameleon<br>U-face same<br> F-face opposites</p>
+	    <div class="flex">
+	      <img src="../chameleon/b4.svg">
+	      <h4>F U' L' U R2 U' L U R2 F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>T - Chameleon<br>Double columns</p>
+	    <div class="flex">
+	      <img src="../chameleon/b6.svg">
+	      <h4>R2 U' R F R' U R2 U' R' F' R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">T - Chameleon<br>Left column</p>
+	    <div class="flex">
+	      <img src="../chameleon/b5.svg">
+	      <h4>U' <span class="sm">R U R' U'</span> <span class="Rfr">R' F R</span> F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>T - Chameleon<br>Double columns</p>
+	    <div class="flex">
+	      <img src="../chameleon/b6.svg">
+	      <h4>R2 U' R F R' U R2 U' R' F' R</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">Pi - Superman<br>Right column</p>
+	    <div class="flex">
+	      <img src="../superman/b1.svg">
+				<div class="multi">
+		      <h4>F (<span class="sm">R U R' U'</span>)2 F'</h4>
+		      <h4>U sune U sune</h4>
+				</div>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>Pi - Superman<br>Back slash</p>
+	    <div class="flex">
+	      <img src="../superman/b2.svg">
+	      <h4>R' U' R U' R' U2 R U' L' U R U' L U R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">Pi - Superman<br>Double slash</p>
+	    <div class="flex">
+	      <img src="../superman/b3.svg">
+	      <h4>U' R' F R U F U' <span class="sm">R U R' U'</span> F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>Pi - Superman<br>Forward slash</p>
+	    <div class="flex">
+	      <img src="../superman/b4.svg">
+	      <h4>R U2 R' U2 R' F R2 U R' U' F'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>Pi - Superman<br>Two columns</p>
+	    <div class="flex">
+	      <img src="../superman/b5.svg">
+	      <h4>U2 L' U R U' L <span class="URUr">U' R' U' R</span> U' R'</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p>Pi - Superman<br>Left column</p>
+	    <div class="flex">
+	      <img src="../superman/b6.svg">
+	      <h4>U2 R' U' R U' R' U F' U F R</h4>
+	    </div>
+    </div>
+		<div class="moves twoLeft">
+	    <p class="done">H - Doublesune<br>Two pairs, columns</p>
+	    <div class="flex">
+	      <img src="../doublesune/b1.svg">
+				<div class="multi">
+		      <h4>R U2 R' U' <span class="sm">R U R' U'</span> R U' R'</h4>
+		      <h4>U sune sune</h4>
+				</div>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">H - Doublesune<br>One pair, front row</p>
+	    <div class="flex">
+	      <img src="../doublesune/b4.svg">
+	      <h4>U' R U R' U R U L' U R' U' L</h4>
+	    </div>
+    </div>
+		<div class="moves">
+	    <p class="done">H - Doublesune<br>One pair, right column</p>
+	    <div class="flex">
+	      <img src="../doublesune/b5.svg">
+	      <h4>U R U2 R2 F R F' U2 <span class="Rfr">R' F R</span> F'</h4>
+	    </div>
+    </div>
+		<div class="moves twoLeft">
+	    <p class="done">H - Doublesune<br>Two pairs, rows</p>
+	    <div class="flex">
+	      <img src="../doublesune/b6.svg">
+	      <h4>F (<span="sm">R U R' U'</span>)3 F'</h4>
+	    </div>
+    </div>
+  </div>
+  <div class="button_wrapper">
+  <div class="buttons">
+    <button id="hint">Hint</button>
+    <button id="moves">Moves</button>
+  </div>
+  <div class="buttons">
+    <button id="next_random">Random</button>
+    <button id="next">Next</button>
+  </div>
+  </div>
+-->
+</div>
+
+<script>
+  var myRandom =  {
+		index : 0,
+    max : 0,
+    moves : '',
+    left  : ['0px', '-406px', '-812px', '-1218px'],
+		initialize : function() {
+      this.set_events();
+      this.show_random();
+		},
+    set_events : function() {
+      const that = this;
+      const moves = document.getElementById('moves');
+      moves.addEventListener('click', function() { that.show_moves();}, false);
+
+      const hint = document.getElementById('hint');
+      hint.addEventListener('click', function() { that.show_hint();}, false);
+
+      const next_random = document.getElementById('next_random');
+      next_random.addEventListener('click', function() { that.change_random(); }, false);
+
+      const next_index = document.getElementById('next');
+      next_index.addEventListener('click', function() { that.show_next(); }, false);
+    },
+    change_random : function() {
+      this.remove_show();
+      this.show_random();
+    },
+    random_left : function(move) {
+      var max_left, left_random;
+      const one_img = move.classList.contains('oneLeft');
+      if (one_img) {
+        left_random = 0;
+      }
+      else {
+        max_left  = move.classList.contains('twoLeft') ? 2 : 4;
+        left_random = Math.floor(Math.random() * max_left);
+      }
+      this.moves[this.index].getElementsByTagName('img')[0].style.marginLeft = this.left[left_random];
+    },
+    remove_show : function() {
+      const show = document.querySelector('.show');
+      const show_hint = document.querySelector('.show_hint');
+      const show_moves = document.querySelector('.show_moves');
+
+      if (show) {
+        show.classList.remove('show');
+      }
+      if (show_hint) {
+        show_hint.classList.remove('show_hint');
+      }
+      if (show_moves) {
+        show_moves.classList.remove('show_moves');
+      }
+    },
+    show_hint : function() {
+      document.getElementById('random').classList.add('show_hint');
+    },
+    show_moves : function() {
+      document.getElementById('random').classList.add('show_moves');
+    },
+    show_next : function() {
+      this.remove_show();
+      this.index = (this.index + 1) % this.max;
+      this.moves[this.index].classList.add('show');
+    },
+    show_random : function() {
+      this.moves = document.querySelectorAll('.moves');
+      this.max = this.moves.length;
+      this.index = Math.floor(Math.random() * this.max);
+      this.moves[this.index].classList.add('show');
+      this.random_left(this.moves[this.index]);
+    },
+  }
+  // myRandom.initialize();
+
+
+</script>
+</body>
+</html>

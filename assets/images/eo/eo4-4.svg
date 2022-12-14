@@ -1,0 +1,32 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="244" height="244" id="svg2" version="1.1" inkscape:version="0.48.5 r10040">
+  <defs id="defs4"/>
+<g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U1" width="60" height="60" x="2" y="2"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F1" d="M 2,182 22,202 82,202 62,182 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R1" d="M 182,2 202,22 202,82 182,62 z"/>
+<rect style="fill:#666;stroke:#000;stroke-width:4" id="U4" width="60" height="60" x="2" y="62"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F4" d="M 22,202 42,222 102,222 82,202 z"/>
+<path style="fill:#666;stroke:#000;stroke-width:4" id="R4" d="M 182,62 202,82 202,142 182,122 z"/>
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U7" width="60" height="60" x="2" y="122"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F7" d="M 42,222 62,242 122,242 102,222 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R7" d="M 182,122 202,142 202,202 182,182 z"/>
+<rect style="fill:#666;stroke:#000;stroke-width:4" id="U2" width="60" height="60" x="62" y="2"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F2" d="M 62,182 82,202 142,202 122,182 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R2" d="M 202,22 222,42 222,102 202,82 z"/>
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U5" width="60" height="60" x="62" y="62"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F5" d="M 82,202 102,222 162,222 142,202 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R5" d="M 202,82 222,102 222,162 202,142 z"/>
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U8" width="60" height="60" x="62" y="122"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F8" d="M 102,222 122,242 182,242 162,222 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R8" d="M 202,142 222,162 222,222 202,202 z"/>
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U3" width="60" height="60" x="122" y="2"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F3" d="M 122,182 142,202 202,202 182,182 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R3" d="M 222,42 242,62 242,122 222,102 z"/>
+<rect style="fill:#666;stroke:#000;stroke-width:4" id="U6" width="60" height="60" x="122" y="62"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F6" d="M 142,202 162,222 222,222 202,202 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R6" d="M 222,102 242,122 242,182 222,162 z"/>
+<rect style="fill:#efe;stroke:#000;stroke-width:4" id="U9" width="60" height="60" x="122" y="122"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="F9" d="M 162,222 182,242 242,242 222,222 z"/>
+<path style="fill:#efe;stroke:#000;stroke-width:4" id="R9" d="M 222,162 242,182 242,242 222,222 z"/>
+</g>
+</svg>
