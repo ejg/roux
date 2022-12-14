@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper">
-    <a href="/roux/cmll">CMLL</a>
-    <a href="/roux/pll">PLL</a>
-    <a href="/roux/eo">EO</a>
-    <a href="/roux/cmll/random">Random</a>
+    <NuxtLink to="/cmll">CMLL</NuxtLink>
+    <NuxtLink to="/pll">PLL</NuxtLink>
+    <NuxtLink to="/eo">EO</NuxtLink>
+    <NuxtLink to="/random">Random</NuxtLink>
   </div>
 </template>
 <style>
