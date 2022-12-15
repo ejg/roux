@@ -1,7 +1,15 @@
 <template>
   <div>
-    <NuxtLink to="/">Home </NuxtLink>
-    <button v-if="!isHome" @click="toggleMenu">Show All</button>
+    <div class="header">
+      <NuxtLink to="/"
+        ><img
+          src="@/assets/images/logo-small.png"
+          alt="speedcube"
+          title="home link"
+      /></NuxtLink>
+      <button v-if="!isHome" @click="toggleMenu">{{ showHideText }} Nav</button>
+      <h1 v-else>Roux Cubing Algorithms</h1>
+    </div>
     <Nav v-if="showNav" />
     <slot />
   </div>
@@ -11,16 +19,28 @@ const router = useRouter();
 const showAll = ref(false);
 const isHome = computed(() => router.currentRoute.value.path == '/');
 const showNav = computed(() => isHome.value || showAll.value);
+const showHideText = computed(() => (showNav.value ? 'Hide' : 'Show'));
 
 function toggleMenu() {
   showAll.value = !showAll.value;
 }
 </script>
 <style scoped>
-a {
-  display: block;
-  background: #eef;
-  padding: 20px 20px 20px 30px;
-  margin: 5px 0;
+img {
+  width: 50px;
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 10px 30px;
+}
+.home {
+  margin: 10px;
 }
 </style>
