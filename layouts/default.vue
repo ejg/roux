@@ -1,15 +1,10 @@
 <template>
   <div>
-    <div class="header">
-      <NuxtLink to="/"
-        ><img
-          src="@/assets/images/logo-small.png"
-          alt="speedcube"
-          title="home link"
-      /></NuxtLink>
-      <button v-if="!isHome" @click="toggleMenu">{{ showHideText }} Nav</button>
-      <h1 v-else>Roux Cubing Algorithms</h1>
-    </div>
+    <Header
+      :buttonText="buttonText"
+      :showButton="showButton"
+      @toggleNav="toggleNav"
+    />
     <Nav v-if="showNav" />
     <slot />
   </div>
@@ -17,30 +12,21 @@
 <script setup>
 const router = useRouter();
 const showAll = ref(false);
-const isHome = computed(() => router.currentRoute.value.path == '/');
-const showNav = computed(() => isHome.value || showAll.value);
-const showHideText = computed(() => (showNav.value ? 'Hide' : 'Show'));
+const showButton = computed(() => router.currentRoute.value.path !== '/');
+const showNav = computed(() => !showButton.value || showAll.value);
+const buttonText = computed(() => (showNav.value ? 'Hide' : 'Show'));
 
-function toggleMenu() {
+function toggleNav() {
   showAll.value = !showAll.value;
 }
+
+const error = useError();
+console.log(error.value);
 </script>
+
 <style scoped>
-img {
-  width: 50px;
-}
-button {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-.header {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin: 10px 30px;
-}
-.home {
-  margin: 10px;
+/* empty or no style create css not found error in nuxt */
+div {
+  margin: 0;
 }
 </style>

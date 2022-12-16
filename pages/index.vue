@@ -6,6 +6,11 @@
     adaptability to One-Handed Solving.
   </p>
 </template>
+<script setup>
+useHead({
+  title: 'Roux Cubing Algorithms',
+});
+</script>
 <style scoped>
 p {
   margin: 20px 30px;
