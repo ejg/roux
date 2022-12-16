@@ -6,8 +6,8 @@
         alt="speedcube"
         title="home link"
     /></NuxtLink>
-    <button v-if="showButton" @click="toggleMenu">{{ buttonText }} Nav</button>
-    <h1>{{ title }}</h1>
+    <button v-if="showButton" @click="toggleNav">{{ buttonText }} Nav</button>
+    <h1>{{ pageTitle }}</h1>
   </div>
 </template>
 <script setup>
@@ -26,9 +26,9 @@ const props = defineProps({
 
 const emit = defineEmits(['toggleNav']);
 
-const title = computed(() => 'Roux Cubing Algorithms');
+const { pageTitle } = usePageData();
 
-function toggleMenu() {
+function toggleNav() {
   emit('toggleNav');
 }
 </script>

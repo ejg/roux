@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout name="error">
-      <h2>{{ error.statusCode }} - {{ error.message }}</h2>
+      <h2>{{ error?.statusCode }} - {{ error?.message }}</h2>
     </NuxtLayout>
   </div>
 </template>

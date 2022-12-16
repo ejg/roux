@@ -7,9 +7,9 @@
   </p>
 </template>
 <script setup>
-useHead({
+/*useHead({
   title: 'Roux Cubing Algorithms',
-});
+}); */
 </script>
 <style scoped>
 p {

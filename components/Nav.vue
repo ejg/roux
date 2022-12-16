@@ -1,11 +1,18 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" @click="closeNav">
     <NuxtLink to="/cmll">CMLL</NuxtLink>
     <NuxtLink to="/pll">PLL</NuxtLink>
     <NuxtLink to="/eo">EO</NuxtLink>
     <NuxtLink to="/random">Random</NuxtLink>
   </div>
 </template>
+<script setup>
+const emit = defineEmits(['toggleNav']);
+
+function closeNav() {
+  emit('toggleNav');
+}
+</script>
 <style scoped>
 a {
   display: block;
