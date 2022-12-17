@@ -1,0 +1,39 @@
+[
+  {
+    "name": "random",
+    "header": "Random",
+    "class": "random"
+  },
+  {
+    "name": "skip",
+    "header": "O - Skip"
+  },
+  {
+    "name": "anti-sune",
+    "header": "AS - Antisune"
+  },
+  {
+    "name": "sune",
+    "header": "S - Sune"
+  },
+  {
+    "name": "bowtie",
+    "header": "L - Bowtie"
+  },
+  {
+    "name": "headlights",
+    "header": "U - Headlights"
+  },
+  {
+    "name": "chameleon",
+    "header": "T - Chameleon"
+  },
+  {
+    "name": "superman",
+    "header": "Pi - Superman"
+  },
+  {
+    "name": "doublesune",
+    "header": "H - Doublesune"
+  }
+]
