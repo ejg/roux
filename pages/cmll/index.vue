@@ -1,4 +1,4 @@
 <template>
-  <h1>Roux Cubing Algorythms</h1>
+  <CMLLNav mode="full" />
 </template>
 <style scoped></style>

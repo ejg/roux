@@ -1,21 +1,27 @@
+import routeData from '@/assets/data/routeData.json';
 const usePageData = () => {
-  let title;
-  let pageTitle;
   const route = useRoute();
   const error = useError();
 
-  console.log('page data', error.value);
-  if (!!error.value) {
-    title = 'Error!';
-  } else {
-    title = 'Roux Cubing';
-  }
-  const head = useHead({
+  const title = computed(() => (!!error.value ? 'Error' : route.name));
+
+  const myRoute = computed(() =>
+    routeData.find((data) => data.name === route.name)
+  );
+
+  const pageTitle = computed(() =>
+    !!myRoute.value
+      ? myRoute.value.pageTitle
+      : !!error.value
+      ? 'Error'
+      : route.name
+  );
+
+  useHead({
     title: title,
-    titleTemplate: '~~ %s ~~',
+    titleTemplate: 'Roux Cubing: %s',
   });
-  console.log('head', head);
-  // const isDarkMode = useState("darkMode" , () => false);
+
   return {
     title,
     pageTitle,

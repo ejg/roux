@@ -1,5 +1,4 @@
 <template>
-  <h1>PLL - Permutation of the Last Layer</h1>
   <div class="box pll">
     <h2>Edges Only</h2>
     <p>Both across</p>
