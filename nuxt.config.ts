@@ -8,10 +8,13 @@ export default defineNuxtConfig({
     head: {
       title: 'roux cubing',
       link: [
-        { rel: 'icon', href: '@/favicon.ico' }
+        { rel: 'icon', href: '/favicon.ico' }
       ],
       noscript: [
         { children: 'Javascript is required' }
+      ],
+      htmlAttrs: [
+        { lang: 'en' }
       ]
     }
   }
