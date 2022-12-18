@@ -7,35 +7,47 @@
       :class="item.class"
     >
       <div class="flex">
-        <CMLLImg
-          v-if="showImage(item.name)"
-          :path="item.name"
-          :alt="item.title"
-          :width="width"
-        />
-        <h2>{{ item.header }}</h2>
+        <CMLLImg :path="item.name" :alt="item.title" :width="width" />
+        <h2 v-if="fullNav">{{ item.pageTitle }}</h2>
       </div>
     </a>
   </div>
 </template>
 <script setup>
-import nav from '@/assets/data/cmllNav.json';
+import routeData from '@/assets/data/routeData.json';
 
 const props = defineProps({
-  mode: String,
-  required: false,
-  default: 'bottom',
+  mode: {
+    type: String,
+    required: false,
+    default: 'bottom',
+  },
 });
 
-const width = ref(100);
+const { mode } = toRefs(props);
 
-function showImage(itemName) {
-  return itemName !== 'random';
-}
+const nav = computed(
+  () => routeData.find((data) => data.name === 'cmll-name').sub
+);
+
+const fullNav = ref(mode.value === 'full');
+
+const width = computed(() => (fullNav.value ? 100 : null));
 </script>
 <style scoped>
+.box.bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2vw;
+  position: fixed;
+  bottom: 0;
+}
 .box.full {
-  margin: 20px 0;
+  flex-direction: column;
+  gap: 0;
   padding: 0 20px;
 }
 .full .flex {
@@ -46,9 +58,12 @@ function showImage(itemName) {
   flex-wrap: wrap;
   margin-bottom: 3px;
 }
+.bottom .flex img {
+  width: clamp(40px, 9vw, 100px);
+  aspect-ratio: 1;
+}
 .full .flex img {
   margin-right: 30px;
-  height: 100px;
 }
 .full .random .flex {
   padding: 30px 10px;

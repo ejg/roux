@@ -1,5 +1,5 @@
 <template>
-  <CMLLNav mode="full" />
+  <CMLLNav />
 </template>
 <script setup lang="ts">
 // import {} from '#app';  scopes name to file

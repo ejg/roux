@@ -14,5 +14,42 @@
   {
     "name": "pll",
     "pageTitle": "Permutation of the Last Layer"
-  }
+  },
+  {
+    "name": "cmll-name",
+    "sub": [
+      {
+        "name": "skip",
+        "pageTitle": "O - Skip"
+      },
+      {
+        "name": "anti-sune",
+        "pageTitle": "AS - Antisune"
+      },
+      {
+        "name": "sune",
+        "pageTitle": "S - Sune"
+      },
+      {
+        "name": "bowtie",
+        "pageTitle": "L - Bowtie"
+      },
+      {
+        "name": "headlights",
+        "pageTitle": "U - Headlights"
+      },
+      {
+        "name": "chameleon",
+        "pageTitle": "T - Chameleon"
+      },
+      {
+        "name": "superman",
+        "pageTitle": "Pi - Superman"
+      },
+      {
+        "name": "doublesune",
+        "pageTitle": "H - Doublesune"
+      }
+    ]
+}
 ]

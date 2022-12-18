@@ -1,39 +1,34 @@
 [
   {
-    "name": "random",
-    "header": "Random",
-    "class": "random"
-  },
-  {
     "name": "skip",
-    "header": "O - Skip"
+    "pageTitle": "O - Skip"
   },
   {
     "name": "anti-sune",
-    "header": "AS - Antisune"
+    "pageTitle": "AS - Antisune"
   },
   {
     "name": "sune",
-    "header": "S - Sune"
+    "pageTitle": "S - Sune"
   },
   {
     "name": "bowtie",
-    "header": "L - Bowtie"
+    "pageTitle": "L - Bowtie"
   },
   {
     "name": "headlights",
-    "header": "U - Headlights"
+    "pageTitle": "U - Headlights"
   },
   {
     "name": "chameleon",
-    "header": "T - Chameleon"
+    "pageTitle": "T - Chameleon"
   },
   {
     "name": "superman",
-    "header": "Pi - Superman"
+    "pageTitle": "Pi - Superman"
   },
   {
     "name": "doublesune",
-    "header": "H - Doublesune"
+    "pageTitle": "H - Doublesune"
   }
 ]
