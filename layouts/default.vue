@@ -2,7 +2,7 @@
   <div>
     <Header
       :buttonText="buttonText"
-      :showButton="showButton"
+      :showButton="!isHome"
       @toggleNav="toggleNav"
     />
     <Nav v-if="showNav" @toggleNav="toggleNav" />
@@ -11,15 +11,17 @@
 </template>
 <script setup>
 const route = useRoute();
-const showAll = ref(false);
-// don't show nav button on home page
-const showButton = computed(() => route.path !== '/');
+
+// home page - don't show nav button, nav always visible
+const isHome = computed(() => route.path === '/');
+const navVisible = ref(isHome.value);
+
 // always show Nav on home page
-const showNav = computed(() => !showButton.value || showAll.value);
+const showNav = computed(() => isHome.value || navVisible.value);
 const buttonText = computed(() => (showNav.value ? 'Hide' : 'Show'));
 
 function toggleNav() {
-  showAll.value = !showAll.value;
+  navVisible.value = !navVisible.value;
 }
 </script>
 
