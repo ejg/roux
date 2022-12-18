@@ -6,7 +6,7 @@
 const props = defineProps({
   path: { type: String },
   alt: { type: String },
-  width: { type: String },
+  width: { type: Number },
 });
 
 const { path } = toRefs(props);
