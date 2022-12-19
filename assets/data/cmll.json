@@ -1,0 +1,41 @@
+
+[
+
+  {
+    "name": "skip",
+    "data":  { 
+      "shorthand" : "as/o!",
+      "hint": "Opposite pair diagonal: F-edge UFR matches U-face UBR",
+      "img": "b1.png",
+      "moves": "R' U' R U' R' U2 R"
+    }
+  },
+  {
+    "name": "anti-sune",
+    "pageTitle": "AS - Antisune"
+  },
+  {
+    "name": "sune",
+    "pageTitle": "S - Sune"
+  },
+  {
+    "name": "bowtie",
+    "pageTitle": "L - Bowtie"
+  },
+  {
+    "name": "headlights",
+    "pageTitle": "U - Headlights"
+  },
+  {
+    "name": "chameleon",
+    "pageTitle": "T - Chameleon"
+  },
+  {
+    "name": "superman",
+    "pageTitle": "Pi - Superman"
+  },
+  {
+    "name": "doublesune",
+    "pageTitle": "H - Doublesune"
+  }
+]

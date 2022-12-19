@@ -1,6 +1,6 @@
 <template>
   <div class="box" :class="mode">
-    <a
+    <NuxtLink
       v-for="item in nav"
       :key="item.name"
       :href="`/cmll/${item.name}`"
@@ -10,7 +10,7 @@
         <CMLLImg :path="item.name" :alt="item.title" :width="width" />
         <h2 v-if="fullNav">{{ item.pageTitle }}</h2>
       </div>
-    </a>
+    </NuxtLink>
   </div>
 </template>
 <script setup>
@@ -35,6 +35,14 @@ const fullNav = ref(mode.value === 'full');
 const width = computed(() => (fullNav.value ? 100 : null));
 </script>
 <style scoped>
+.router-link-active {
+  filter: hue-rotate(180deg);
+}
+@media (hover: hover) {
+  a:hover {
+    filter: brightness(0.5) hue-rotate(-10deg) saturate(50);
+  }
+}
 .box.bottom {
   width: 100%;
   display: flex;
