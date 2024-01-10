@@ -1,41 +1,7 @@
 
 [
-
-  {
-    "name": "skip",
-    "data":  { 
-      "shorthand" : "as/o!",
-      "hint": "Opposite pair diagonal: F-edge UFR matches U-face UBR",
-      "img": "b1.png",
-      "moves": "R' U' R U' R' U2 R"
-    }
-  },
-  {
-    "name": "anti-sune",
-    "pageTitle": "AS - Antisune"
-  },
-  {
-    "name": "sune",
-    "pageTitle": "S - Sune"
-  },
-  {
-    "name": "bowtie",
-    "pageTitle": "L - Bowtie"
-  },
-  {
-    "name": "headlights",
-    "pageTitle": "U - Headlights"
-  },
-  {
-    "name": "chameleon",
-    "pageTitle": "T - Chameleon"
-  },
-  {
-    "name": "superman",
-    "pageTitle": "Pi - Superman"
-  },
-  {
-    "name": "doublesune",
-    "pageTitle": "H - Doublesune"
-  }
+  {"id":"1","cmll":"skip","shorthand":"Correct","hint":"","image":"a1.svg","moves":"Done"},
+  {"id":"2","cmll":"skip","shorthand":"One correct pair","hint":"Adjust U-face to get this pair in the L-face.","image":"a2.svg","moves":"R U2 R' U' R U2 L' U R' U' L"},
+  {"id":"3","cmll":"skip","shorthand":"No correct pairs","hint":"All edges are pairs of opposite colors","image":"a3.svg","moves":"(R' U L' U2 R U' L)2"}
 ]
+  

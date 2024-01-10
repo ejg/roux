@@ -3,7 +3,7 @@
     {{ move.shorthand }} <span>{{ move.hint }}</span>
   </p>
   <div class="flex">
-    <img src="move.image" />
+    <!-- <img src="move.image" /> -->
     <h4>{{ move.moves }}</h4>
   </div>
 </template>

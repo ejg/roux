@@ -19,7 +19,7 @@ const usePageData = () => {
   function getRoute() {
     let data;
     data = routeData.find((data) => data.name === route.name);
-    if (data.sub) {
+    if (!!data && !!data.sub) {
       data = data.sub.find((data) => data.name === route.params.name);
     }
     return data;
